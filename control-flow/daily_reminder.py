@@ -1,24 +1,34 @@
-task = input("Enter your task: ")
+# Prompt for task and store it
+  task = input("Enter your task: ")
 
-priority = input("Priority (high/medium/low): ").strip().lower()
+  # Prompt for priority (high, medium, low) and store it
+  while True:
+    priority = input("Priority (high/medium/low): ").lower()
+    if priority in ("high", "medium", "low"):
+      break
+    else:
+      print("Invalid priority. Please enter high, medium, or low.")
 
-time_bound = input("Is it time-bound? (yes/no): ").strip().lower()
+  # Prompt for time sensitivity (yes or no) and store it
+  while True:
+    time_bound = input("Is it time-bound? (yes/no): ").lower()
+    if time_bound in ("yes", "no"):
+      break
+    else:
+      print("Invalid input. Please enter yes or no.")
 
-match priority:
+  # Process the task based on priority and time sensitivity
+  reminder_message = f"'{task}' is a {priority} priority task. "
+
+  match priority:
     case "high":
-        reminder = f"Reminder: '{task}' is a high priority task"
+      reminder_message += "Consider completing it today."
+      if time_bound == "yes":
+        reminder_message += " It requires immediate attention!"
     case "medium":
-        reminder = f"Reminder: '{task}' is a medium priority task"
+      reminder_message += "Keep it in mind for this week."
     case "low":
-        reminder = f"Note: '{task}' is a low priority task"
-    case _:
-        reminder = "Invalid priority level entered."
-        time_bound = "no" 
+      reminder_message += "Consider completing it when you have free time."
 
-if time_bound == "yes" and "Invalid" not in reminder:
-    reminder += " that requires immediate attention today!"
-
-if time_bound == "no" and priority == "low":
-    reminder += " Consider completing it when you have free time."
-
-print(reminder)
+  # Print the reminder message
+  print(reminder_message)
