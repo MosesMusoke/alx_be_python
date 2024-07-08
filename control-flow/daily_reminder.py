@@ -18,7 +18,7 @@
       print("Invalid input. Please enter yes or no.")
 
   # Process the task based on priority and time sensitivity
-  Reminder = f"'{task}' is a {priority} priority task. "
+  Reminder = f"Reminder: '{task}' is a {priority} priority task. "
 
   match priority:
     case "high":
