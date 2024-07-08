@@ -18,17 +18,17 @@
       print("Invalid input. Please enter yes or no.")
 
   # Process the task based on priority and time sensitivity
-  reminder_message = f"'{task}' is a {priority} priority task. "
+  Reminder = f"'{task}' is a {priority} priority task. "
 
   match priority:
     case "high":
-      reminder_message += "Consider completing it today."
+      Reminder += "Consider completing it today."
       if time_bound == "yes":
-        reminder_message += " It requires immediate attention!"
+        Reminder += " It requires immediate attention!"
     case "medium":
-      reminder_message += "Keep it in mind for this week."
+      Reminder += "Keep it in mind for this week."
     case "low":
-      reminder_message += "Consider completing it when you have free time."
+      Reminder += "Consider completing it when you have free time."
 
   # Print the reminder message
-  print(reminder_message)
+  print(Reminder)
