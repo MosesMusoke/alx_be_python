@@ -21,5 +21,3 @@ def main():
     current_date = display_current_datetime()
     calculate_future_date(current_date)
 
-if __name__ == "__main__":
-    main()
