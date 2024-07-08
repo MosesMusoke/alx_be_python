@@ -1,34 +1,31 @@
-# Prompt for task and store it
-  task = input("Enter your task: ")
-
-  # Prompt for priority (high, medium, low) and store it
-  while True:
+def get_task_info():
+    task = input("Enter your task: ")
     priority = input("Priority (high/medium/low): ").lower()
-    if priority in ("high", "medium", "low"):
-      break
-    else:
-      print("Invalid priority. Please enter high, medium, or low.")
-
-  # Prompt for time sensitivity (yes or no) and store it
-  while True:
     time_bound = input("Is it time-bound? (yes/no): ").lower()
-    if time_bound in ("yes", "no"):
-      break
+    return task, priority, time_bound
+
+def generate_reminder(task, priority, time_bound):
+    match priority:
+        case "high":
+            reminder = f"'{task}' is a high priority task"
+        case "medium":
+            reminder = f"'{task}' is a medium priority task"
+        case "low":
+            reminder = f"'{task}' is a low priority task"
+        case _:
+            reminder = f"'{task}' has an unknown priority level"
+
+    if time_bound == "yes":
+        reminder += " that requires immediate attention today!"
     else:
-      print("Invalid input. Please enter yes or no.")
+        reminder += ". Consider completing it when you have free time."
 
-  # Process the task based on priority and time sensitivity
-  Reminder = f"Reminder: '{task}' is a {priority} priority task. "
+    return reminder
 
-  match priority:
-    case "high":
-      Reminder += "Consider completing it today."
-      if time_bound == "yes":
-        Reminder += " It requires immediate attention!"
-    case "medium":
-      Reminder += "Keep it in mind for this week."
-    case "low":
-      Reminder += "Consider completing it when you have free time."
+def main():
+    task, priority, time_bound = get_task_info()
+    reminder = generate_reminder(task, priority, time_bound)
+    print("\nReminder:", reminder)
 
-  # Print the reminder message
-  print(Reminder)
+if __name__ == "__main__":
+    main()
