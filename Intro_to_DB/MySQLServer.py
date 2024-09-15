@@ -3,17 +3,17 @@ from mysql.connector import errorcode
 
 def create_database():
     try:
-        # Connecting to my MySQL server
+        # Connect to MySQL server
         conn = mysql.connector.connect(
             host="localhost",
-            user="my_username", 
-            password="my_password"  
+            user="my_username",  # Replace with your MySQL username
+            password="my_password"  # Replace with your MySQL password
         )
 
-        # Creating a cursor object
+        # Create a cursor object
         cursor = conn.cursor()
 
-        # Creating the database if it doesn't exist
+        # SQL query to create the database
         cursor.execute("CREATE DATABASE IF NOT EXISTS alx_book_store")
 
         print("Database 'alx_book_store' created successfully!")
